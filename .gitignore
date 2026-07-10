@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.env
+.venv
+env/
+venv/
+ENV/
+
+# Distribution / packaging
+.eggs/
+dist/
+build/
+*.egg-info/
+
+# Testing
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+# Output — tracked (like every other public exemplar); it is this project's
+# reproducibility bundle. Only per-run noise below is ignored.
+
+# OS
+.DS_Store
+Thumbs.db

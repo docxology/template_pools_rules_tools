@@ -1,0 +1,73 @@
+# config.yaml.example — Forkable template for template_pools_rules_tools
+# Copy this file to config.yaml and fill in your own values.
+
+paper:
+  title: "Your Paper Title"
+  subtitle: "Your Subtitle"
+  version: "1.0.0"
+  date: ""  # Leave empty to auto-fill from pipeline
+
+authors:
+  - name: "Your Name"
+    orcid: "0000-0000-0000-0000"
+    email: "your@email.org"
+    affiliation: "Your Institution"
+    corresponding: true
+
+publication:
+  doi: ""  # Fill after Zenodo deposit
+  github_repository: "your-org/your-repo"
+
+strong_rules:
+  canonical_sections:
+    - Abstract
+    - Introduction
+    - Related Work
+    - Methods
+    - Results
+    - Discussion
+    - Conclusion
+    - References
+  coverage:
+    infrastructure: 60
+    project_src: 90
+    public_api: 95
+
+sections:
+  abstract: true
+  introduction: true
+  fonds: true
+  rules: true
+  tools: true
+  integration: true
+  conclusion: true
+
+integration:
+  rule_sets:
+    - template_project_rules   # Replace with your rule sets
+  tools:
+    - template_code_executor   # Replace with your tools
+  fonds:
+    - template_bibliography    # Replace with your fonds
+
+manuscript_variables_path: "output/data/manuscript_variables.json"
+
+figures:
+  architecture_overview:
+    path: "figures/architecture_overview.png"
+    caption: "Architecture overview figure path placeholder."
+    label: "fig:architecture"
+    width: "0.9\\linewidth"
+
+render:
+  engine: "pandoc"
+  bibliography_style: "chicago-author-date"
+  link_citations: true
+  number_sections: true
+  toc: true
+  toc_depth: 3
+  highlight_style: "tango"
+
+# Page geometry forwarded to the LaTeX/Pandoc render (mirrors config.yaml).
+metadata:
+  geometry: "a4paper,margin=1.6cm,top=1.8cm,bottom=1.8cm"

@@ -1,0 +1,22 @@
+{
+  "creators": [
+    {
+      "affiliation": "Active Inference Institute",
+      "name": "Friedman, Daniel Ari",
+      "orcid": "0000-0001-6232-9096"
+    }
+  ],
+  "description": "Source code for Pools, Rules, and Tools: A Template-Integrated Resource Architecture.",
+  "keywords": [],
+  "license": "CC-BY-4.0",
+  "related_identifiers": [
+    {
+      "identifier": "10.5281/zenodo.21298888",
+      "relation": "isVersionOf",
+      "scheme": "doi"
+    }
+  ],
+  "title": "Pools, Rules, and Tools: A Template-Integrated Resource Architecture",
+  "upload_type": "software",
+  "version": "1.0.0"
+}
