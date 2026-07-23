@@ -65,7 +65,7 @@ allow_untyped_defs = false
 disallow_any_unimported = true
 disallow_any_explicit = true
 disallow_any_expr = false
-disallow_any_decorator = false
+disallow_any_decorated = false
 warn_unused_configs = true
 warn_redundant_casts = true
 warn_unused_ignores = true
@@ -82,3 +82,6 @@ line-length = 100
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "N", "W", "UP", "B", "SIM", "ARG", "PTH"]
+
+[tool.ruff.lint.per-file-ignores]
+"scripts/*.py" = ["E402", "E501", "N999"]  # Executable stage names and path bootstrap imports
