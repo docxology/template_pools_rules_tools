@@ -150,7 +150,7 @@ This project is designed to run **inside** the [docxology/template](https://gith
 
 - `pyyaml` — YAML manifest loading (always available in the template environment)
 - `matplotlib` — deterministic PNG figure generation
-- `pillow` — image loading in the figure pipeline
+- `pillow` — declared runtime dependency; matplotlib's PNG backend (`src/` imports no `PIL` symbols directly)
 - `jsonschema` — real validator-tool subprocess tests
 
 Dev tooling (`pytest`, `pytest-cov`, `mypy`, `hypothesis`, `types-PyYAML`) is
