@@ -7,8 +7,9 @@ file to output/data/ (created if absent). Token computation lives in
 ``scripts/z_generate_manuscript_variables.py`` (which additionally injects
 the tokens into ``output/manuscript/`` before rendering).
 
-Run from the repository root:
-    uv run python projects/templates/template_pools_rules_tools/scripts/03_generate_manuscript.py
+Run from this repository root (template monorepo: prefix the path with
+``projects/templates/template_pools_rules_tools/``):
+    uv run python scripts/03_generate_manuscript.py
 """
 
 from __future__ import annotations

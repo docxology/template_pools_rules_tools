@@ -20,6 +20,11 @@ it to `output/figures/`, and writes `figure_registry.json` only after the eight
 referenced figures declared in `src/figures.py` are present. Cover art remains
 an unreferenced extra and is not misrepresented as manuscript evidence.
 
+`05_generate_figures.py` and `z_generate_manuscript_variables.py` import the
+template monorepo's `infrastructure/` package at module scope, so they only run
+inside a full template checkout — from this standalone repository, run
+`01`–`04` (see [`../STANDALONE.md`](../STANDALONE.md)).
+
 ## See also
 
 - [`../AGENTS.md`](../AGENTS.md)

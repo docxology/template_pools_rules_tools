@@ -13,9 +13,14 @@ import pytest
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT.parents[2]))
 
-from infrastructure.validation.content.figure_validator import (  # noqa: E402
-    validate_figure_registry,
+# The registry validator lives in the template monorepo's `infrastructure/`
+# package, which a standalone checkout does not ship (see STANDALONE.md). Skip
+# at collection time there instead of failing the whole run on import.
+figure_validator = pytest.importorskip(
+    "infrastructure.validation.content.figure_validator",
+    reason="template monorepo `infrastructure` package not present",
 )
+validate_figure_registry = figure_validator.validate_figure_registry
 
 from src.figures import all_figures  # noqa: E402
 

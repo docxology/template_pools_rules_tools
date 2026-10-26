@@ -124,17 +124,17 @@ Set `POOLS_RULES_TOOLS_ROOT=/path/to/my_project` before running.
 ## Installation
 
 ```bash
-# Minimal — runtime only
-pip install pyyaml
+# Runtime only
+pip install .
 
-# Development (tests + type-checking)
-pip install pyyaml pytest pytest-cov mypy
+# Development (tests + type-checking) — same set as the `dev` extra in pyproject.toml
+pip install -e ".[dev]"
 ```
 
 Or with [uv](https://github.com/astral-sh/uv):
 
 ```bash
-uv sync
+uv sync --extra dev
 ```
 
 ---
@@ -180,8 +180,15 @@ template monorepo, where `tools/templates/` holds four manifests,
 
 ```bash
 # From the project root (standalone copy):
-pytest tests/ -v --cov=src --cov-fail-under=90  # noqa: docs-lint — standalone pip/venv workflow, no uv-managed interpreter here
+pytest tests/ -v
 ```
+
+The suite is written against a complete resource layout. Tests that read
+`fonds/`, `rules/`, or `tools/` skip when those trees are absent, but the
+resource-dependent strong-rule and resource-receipt tests fail without them,
+and the 90% `src/` coverage floor configured in `pyproject.toml` is only
+reachable in a checkout that ships those trees. In a standalone copy that holds
+only `src/`, run the suite without `--cov`, or pass `--cov-fail-under=0`.
 
 ---
 

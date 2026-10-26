@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """02_run_integration.py — Run the full fonds/rules/tools integration demo.
 
-Run from the repository root:
-    uv run python projects/templates/template_pools_rules_tools/scripts/02_run_integration.py
+Run from this repository root (template monorepo: prefix the path with
+``projects/templates/template_pools_rules_tools/``):
+    uv run python scripts/02_run_integration.py
 """
 
 from __future__ import annotations

@@ -26,26 +26,30 @@ structure map.
 
 ## Running
 
-This exemplar runs via the template monorepo from the repository root. Project
-scripts (from the repo AGENTS.md):
+This exemplar runs from this repository root standalone, or via the template
+monorepo from the monorepo root (prefix paths with
+`projects/templates/template_pools_rules_tools/`). Project scripts:
 
 ```bash
-uv run python projects/templates/template_pools_rules_tools/scripts/01_validate_sources.py
-uv run python projects/templates/template_pools_rules_tools/scripts/02_run_integration.py
-uv run python projects/templates/template_pools_rules_tools/scripts/03_generate_manuscript.py
-uv run python projects/templates/template_pools_rules_tools/scripts/04_validate_strong_rules.py
+uv run python scripts/01_validate_sources.py
+uv run python scripts/02_run_integration.py
+uv run python scripts/03_generate_manuscript.py
+uv run python scripts/04_validate_strong_rules.py
 ```
+
+`scripts/05_generate_figures.py` and `scripts/z_generate_manuscript_variables.py`
+import the monorepo `infrastructure/` package and only run inside a full template
+checkout.
 
 Forks: copy `manuscript/config.yaml.example` to `manuscript/config.yaml`.
 
 ## Testing
 
 Project pytest config lives in `pyproject.toml` (`testpaths = ["tests"]`,
-`pythonpath = [".", "src"]`). From the monorepo root:
+`pythonpath = [".", "src"]`). From this repository root:
 
 ```bash
-uv run pytest projects/templates/template_pools_rules_tools/tests/ \
-  --cov=projects/templates/template_pools_rules_tools/src --cov-fail-under=90
+uv run pytest tests/ --cov=src --cov-fail-under=90
 ```
 
 ## Documentation maintenance

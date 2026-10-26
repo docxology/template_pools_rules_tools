@@ -50,19 +50,20 @@ write back to `fonds/`, `rules/`, or `tools/` from project code.
 
 ## Commands
 
-Run from the repository root:
+Run from this repository root (inside the monorepo, prefix paths with
+`projects/templates/template_pools_rules_tools/` and run from the monorepo root):
 
 ```bash
 # Tests
-uv run pytest projects/templates/template_pools_rules_tools/tests/ -v \
-    --cov=projects/templates/template_pools_rules_tools/src \
+uv run pytest tests/ -v \
+    --cov=src \
     --cov-fail-under=90
 
 # Scripts
-uv run python projects/templates/template_pools_rules_tools/scripts/01_validate_sources.py
-uv run python projects/templates/template_pools_rules_tools/scripts/02_run_integration.py
-uv run python projects/templates/template_pools_rules_tools/scripts/03_generate_manuscript.py
-uv run python projects/templates/template_pools_rules_tools/scripts/04_validate_strong_rules.py
+uv run python scripts/01_validate_sources.py
+uv run python scripts/02_run_integration.py
+uv run python scripts/03_generate_manuscript.py
+uv run python scripts/04_validate_strong_rules.py
 ```
 
 ---

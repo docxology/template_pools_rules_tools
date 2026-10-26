@@ -16,38 +16,34 @@ import pytest
 
 sys.path.insert(0, str(pathlib.Path(__file__).parents[1]))
 
-try:
-    from hypothesis import given, settings
-    from hypothesis import strategies as st
-
-    _HYPOTHESIS_AVAILABLE = True
-except ImportError:
-    _HYPOTHESIS_AVAILABLE = False
-
-pytestmark = pytest.mark.skipif(
-    not _HYPOTHESIS_AVAILABLE,
-    reason="hypothesis not installed — skipping property-based tests",
+# Skip at collection time: the strategies and @given decorators below are
+# evaluated at import, so a runtime skipif cannot protect collection when
+# hypothesis is absent.
+pytest.importorskip(
+    "hypothesis", reason="hypothesis not installed — skipping property-based tests"
 )
 
-if _HYPOTHESIS_AVAILABLE:
-    from src.fonds_reader import (
-        read_all_fonds,
-        read_bibliography_fond,
-        read_contacts_fond,
-        read_datasets_fond,
-    )
-    from src.integration import run_integration_demo
-    from src.rules_applier import (
-        load_all_manuscript_rules,
-        load_all_project_rules,
-        load_soft_rules,
-        load_strong_rules,
-        validate_against_rules,
-    )
-    from src.tools_invoker import (
-        get_tool_entrypoints,
-        validate_tool_scripts_exist,
-    )
+from hypothesis import given, settings  # noqa: E402
+from hypothesis import strategies as st  # noqa: E402
+
+from src.fonds_reader import (  # noqa: E402
+    read_all_fonds,
+    read_bibliography_fond,
+    read_contacts_fond,
+    read_datasets_fond,
+)
+from src.integration import run_integration_demo  # noqa: E402
+from src.rules_applier import (  # noqa: E402
+    load_all_manuscript_rules,
+    load_all_project_rules,
+    load_soft_rules,
+    load_strong_rules,
+    validate_against_rules,
+)
+from src.tools_invoker import (  # noqa: E402
+    get_tool_entrypoints,
+    validate_tool_scripts_exist,
+)
 
 
 # ---------------------------------------------------------------------------

@@ -1,6 +1,7 @@
 # CLAUDE.md — template_pools_rules_tools
 
-Agent guidance for code agents (Claude, Codex, Gemini, etc.) working in
+Agent guidance for code agents (Claude, Codex, Gemini, etc.) working in this
+repository — published standalone, and mirrored in the template monorepo at
 `projects/templates/template_pools_rules_tools/`.
 
 ---
@@ -58,9 +59,10 @@ resource directories without writing back to them:
 ## Running tests
 
 ```bash
-# From repository root:
-uv run pytest projects/templates/template_pools_rules_tools/tests/ -v \
-    --cov=projects/templates/template_pools_rules_tools/src \
+# From this repository root (monorepo: prefix with
+# projects/templates/template_pools_rules_tools/ and run from the monorepo root)
+uv run pytest tests/ -v \
+    --cov=src \
     --cov-fail-under=90
 ```
 
@@ -69,9 +71,8 @@ uv run pytest projects/templates/template_pools_rules_tools/tests/ -v \
 ## Type-checking
 
 ```bash
-# From repository root:
-uv run mypy projects/templates/template_pools_rules_tools/src \
-    --config-file projects/templates/template_pools_rules_tools/pyproject.toml
+# From this repository root:
+uv run mypy src --config-file pyproject.toml
 ```
 
 ---

@@ -2,8 +2,9 @@
 """01_validate_sources.py — Validate that all fonds, rules, and tools sources exist
 and are well-formed.
 
-Run from the repository root:
-    uv run python projects/templates/template_pools_rules_tools/scripts/01_validate_sources.py
+Run from this repository root (template monorepo: prefix the path with
+``projects/templates/template_pools_rules_tools/``):
+    uv run python scripts/01_validate_sources.py
 """
 
 from __future__ import annotations

@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """04_validate_strong_rules.py — Semantic evaluation of strong rule schemas.
 
-Run from the repository root:
-    uv run python projects/templates/template_pools_rules_tools/scripts/04_validate_strong_rules.py
+Run from this repository root (template monorepo: prefix the path with
+``projects/templates/template_pools_rules_tools/``):
+    uv run python scripts/04_validate_strong_rules.py
 """
 
 from __future__ import annotations

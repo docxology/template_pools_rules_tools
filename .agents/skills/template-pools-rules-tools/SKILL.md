@@ -26,17 +26,20 @@ validating the three-resource architecture (fonds, rules, tools).
 ## Quick Reference
 
 ```bash
-# From the repository root
-uv run pytest projects/templates/template_pools_rules_tools/tests/ \
-  --cov=projects/templates/template_pools_rules_tools/src --cov-fail-under=90
+# From this repository root (monorepo: prefix with
+# projects/templates/template_pools_rules_tools/ and run from the monorepo root)
+uv run pytest tests/ --cov=src --cov-fail-under=90
 
-uv run python projects/templates/template_pools_rules_tools/scripts/01_validate_sources.py
-uv run python projects/templates/template_pools_rules_tools/scripts/02_run_integration.py
-uv run python projects/templates/template_pools_rules_tools/scripts/03_generate_manuscript.py
-uv run python projects/templates/template_pools_rules_tools/scripts/04_validate_strong_rules.py
-uv run python projects/templates/template_pools_rules_tools/scripts/05_generate_figures.py
-uv run python projects/templates/template_pools_rules_tools/scripts/z_generate_manuscript_variables.py
+uv run python scripts/01_validate_sources.py
+uv run python scripts/02_run_integration.py
+uv run python scripts/03_generate_manuscript.py
+uv run python scripts/04_validate_strong_rules.py
 
+# Monorepo-only (import the `infrastructure/` package):
+uv run python scripts/05_generate_figures.py
+uv run python scripts/z_generate_manuscript_variables.py
+
+# Monorepo pipeline stages:
 uv run python scripts/pipeline/stage_02_analysis.py --project templates/template_pools_rules_tools
 uv run python scripts/pipeline/stage_03_render.py --project templates/template_pools_rules_tools
 uv run python scripts/runner/execute_pipeline.py --project templates/template_pools_rules_tools --core-only

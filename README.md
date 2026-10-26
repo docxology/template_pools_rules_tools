@@ -2,8 +2,9 @@
 
 **Pools, Rules, and Tools: A Template-Integrated Resource Architecture**
 
-Run via the template monorepo from the repository root with `uv run python scripts/…`
-or project-local scripts under `projects/templates/template_pools_rules_tools/scripts/`.
+Run from this repository root with `uv run python scripts/…`; inside the
+[template monorepo](https://github.com/docxology/template) the same scripts live at
+`projects/templates/template_pools_rules_tools/scripts/`.
 Copy `manuscript/config.yaml.example` to `manuscript/config.yaml` for forkable
 configuration. Preserve template integrity when forking this exemplar into a
 standalone checkout.
@@ -73,16 +74,26 @@ template_pools_rules_tools/
 
 ## Quick Start
 
-From the repository root:
+From this repository root (standalone checkout):
 
 ```bash
+uv sync --extra dev
+
 # Run tests
-uv run pytest projects/templates/template_pools_rules_tools/tests/ -v
+uv run pytest tests/ -v
 
 # Validate sources
-uv run python projects/templates/template_pools_rules_tools/scripts/01_validate_sources.py
+uv run python scripts/01_validate_sources.py
 
 # Run integration demo
+uv run python scripts/02_run_integration.py
+```
+
+Inside the [template monorepo](https://github.com/docxology/template), run the
+same commands from the monorepo root with the project prefix:
+
+```bash
+uv run pytest projects/templates/template_pools_rules_tools/tests/ -v
 uv run python projects/templates/template_pools_rules_tools/scripts/02_run_integration.py
 ```
 
@@ -133,20 +144,17 @@ Publishing surface — 20 platforms, 2 published:
 _Status legend: ✅ published (durable identifier recorded in `config.yaml`) · 🔵 reserved (identifier reserved but not yet registered by final publication) · ⚪ available (adapter implemented and locally verifiable) · 🟡 planned. This block is generated — edit `manuscript/config.yaml`, then regenerate with `uv run python -m infrastructure.publishing.status_report --project <path> --write`._
 <!-- PUBLISHING-STATUS:END -->
 
-This project is designed to run **inside** the [docxology/template](https://github.com/docxology/template) monorepo. All paths resolve relative to the repository root. The project reads public tracked exemplars from `fonds/templates/`, `tools/templates/`, and `rules/templates/` — these must be present.
-
-```bash
-# From the template repository root
-uv sync
-uv run pytest projects/templates/template_pools_rules_tools/tests/ -v
-uv run python projects/templates/template_pools_rules_tools/scripts/02_run_integration.py
-```
+This project is designed to run **inside** the [docxology/template](https://github.com/docxology/template) monorepo. All paths resolve relative to the repository root. The project reads public tracked exemplars from `fonds/templates/`, `tools/templates/`, and `rules/templates/` — these must be present; in a standalone checkout they are absent, and the readers degrade to empty results with logged warnings (see [`STANDALONE.md`](STANDALONE.md)). Run the monorepo-prefixed commands from [Quick Start](#quick-start).
 
 ## Dependencies
 
 - `pyyaml` — YAML manifest loading (always available in the template environment)
 - `matplotlib` — deterministic PNG figure generation
+- `pillow` — image loading in the figure pipeline
 - `jsonschema` — real validator-tool subprocess tests
+
+Dev tooling (`pytest`, `pytest-cov`, `mypy`, `hypothesis`, `types-PyYAML`) is
+declared in the `dev` extra: `uv sync --extra dev`.
 
 ## See Also
 
