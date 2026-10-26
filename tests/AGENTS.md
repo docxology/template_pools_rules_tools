@@ -1,6 +1,8 @@
 # tests/ — template_pools_rules_tools
 
-Project tests (90% coverage floor on `src/`). Real fixtures under `fonds/`,
+Project tests (90% coverage floor on `src/`, configured in `pyproject.toml`;
+reachable only where the `fonds/`, `rules/`, and `tools/` trees are present —
+a standalone copy without them lands near 65%). Real fixtures under `fonds/`,
 `rules/`, and `tools/` template trees — no mocks.
 
 ## Running
@@ -13,13 +15,13 @@ uv run pytest tests/ --cov=src --cov-fail-under=90
 
 ## Files
 
-The suite currently contains ten test modules:
+The suite currently contains eleven test modules:
 
 `test_coverage_extras.py`, `test_figures.py`, `test_fonds_reader.py`,
 `test_generate_figures_script.py`, `test_integration.py`,
 `test_manuscript_variables.py`, `test_property_based.py`,
-`test_rules_applier.py`, `test_strong_rule_evaluator.py`, and
-`test_tools_invoker.py`.
+`test_resource_schema.py`, `test_rules_applier.py`,
+`test_strong_rule_evaluator.py`, and `test_tools_invoker.py`.
 
 ## See also
 

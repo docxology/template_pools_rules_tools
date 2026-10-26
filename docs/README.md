@@ -52,6 +52,10 @@ Project pytest config lives in `pyproject.toml` (`testpaths = ["tests"]`,
 uv run pytest tests/ --cov=src --cov-fail-under=90
 ```
 
+The 90% floor needs the `fonds/`, `rules/`, and `tools/` trees: a standalone
+copy that ships only `src/` reaches ~65% and fails the resource-dependent
+strong-rule and receipt tests, so run without `--cov` there.
+
 ## Documentation maintenance
 
 Docs here are hand-maintained, short, and evidence-based: every factual claim

@@ -29,6 +29,8 @@ validating the three-resource architecture (fonds, rules, tools).
 # From this repository root (monorepo: prefix with
 # projects/templates/template_pools_rules_tools/ and run from the monorepo root)
 uv run pytest tests/ --cov=src --cov-fail-under=90
+# 90% floor and the strong-rule/receipt tests need the monorepo's
+# fonds/, rules/, and tools/ trees; a bare src/ checkout reaches ~65%.
 
 uv run python scripts/01_validate_sources.py
 uv run python scripts/02_run_integration.py

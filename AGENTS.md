@@ -66,6 +66,10 @@ uv run python scripts/03_generate_manuscript.py
 uv run python scripts/04_validate_strong_rules.py
 ```
 
+The `--cov-fail-under=90` floor, and the strong-rule / resource-receipt tests,
+need the `fonds/`, `rules/`, and `tools/` trees: a standalone copy without them
+reaches ~65% coverage and fails those resource-dependent tests.
+
 ---
 
 ## Resilience Policy
