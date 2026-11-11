@@ -59,3 +59,7 @@ No active rows are currently scoped at this size.
 
 Rows remain active until the acceptance command and negative control pass in the same source revision.
 A blocked row is a deliberate boundary, not a skipped success.
+
+## Workflowz review — 2026-11-10
+
+Coverage note: this dated review was a read-only, bounded evidence-packet pass over 4 project files and 8 source excerpts out of 32 source candidates (93 total files); fonds_reader.py, rules_applier.py, strong_rule_evaluator.py, integration.py, figures.py, all scripts/, and all tests/ were not visible and remain unreviewed. No concrete correctness, maintainability, documentation, validation, or dead-code improvement survived with exact visible path:line evidence, so no new backlog rows were added. Re-review on a concrete failure report or on a source change to src/, scripts/, or the resource-discovery roots.
