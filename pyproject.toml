@@ -13,7 +13,7 @@ description = "Meta-project demonstrating fonds, tools, and rules integration"
 authors = [
     {name = "Daniel Ari Friedman", email = "daniel@activeinference.institute"}
 ]
-requires-python = ">=3.10"
+requires-python = ">=3.11"
 dependencies = [
     "pyyaml>=6.0",
     "matplotlib>=3.7.0",
