@@ -2,6 +2,8 @@
 
 **Pools, Rules, and Tools: A Template-Integrated Resource Architecture**
 
+![Resource architecture overview integrating fonds data pools, formal and soft rule specifications, and executable tool contracts](output/figures/architecture_overview.png)
+
 Run from this repository root with `uv run python scripts/…`; inside the
 [template monorepo](https://github.com/docxology/template) the same scripts live at
 `projects/templates/template_pools_rules_tools/scripts/`.
