@@ -1,5 +1,5 @@
 <!--
-manuscript/preamble.md — LaTeX preamble for the Pools, Rules, and Tools manuscript.
+docs/manuscript/preamble.md — LaTeX preamble for the Pools, Rules, and Tools manuscript.
 
 `infrastructure/rendering/_pdf_latex_helpers.py::extract_preamble` only
 recovers content between a closed ```latex ... ``` fence. An unfenced file
@@ -7,7 +7,7 @@ falls back to a conservative single-line whitelist that silently drops any
 multi-line directive (geometry blocks, hypersetup, tcolorbox definitions,
 etc.) — keep this fence intact.
 
-Page margins are sourced from `manuscript/config.yaml`'s
+Page margins are sourced from `docs/manuscript/config.yaml`'s
 `metadata.geometry` key (single source of truth) — do not add a
 `\geometry{}` call here, or the two declarations conflict.
 -->

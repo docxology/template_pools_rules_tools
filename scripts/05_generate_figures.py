@@ -21,11 +21,12 @@ from infrastructure.documentation.generated_figure_registry import (  # noqa: E4
 
 from src.figures import FIGURE_REGISTRY_SCHEMA, INTEGRATION_FIGURE_SPECS, all_figures  # noqa: E402
 from src.integration import derive_dashboard_data, run_integration_demo  # noqa: E402
+from src.project_paths import manuscript_source_dir  # noqa: E402
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s  %(message)s")
 logger = logging.getLogger(__name__)
 
-_FIGURES_DIR = _PROJECT_DIR / "manuscript" / "figures"
+_FIGURES_DIR = manuscript_source_dir(_PROJECT_DIR) / "figures"
 _OUTPUT_FIGURES_DIR = _PROJECT_DIR / "output" / "figures"
 
 
@@ -67,7 +68,7 @@ def main() -> int:
     """CLI entry point."""
     written = generate_assets()
 
-    # manuscript/figures/ is the git-tracked canonical location (resolved by
+    # docs/manuscript/figures/ is the git-tracked canonical location (resolved by
     # the combined-PDF render via its manuscript-dir resource path). Mirror a
     # disposable copy to output/figures/ too, since the Beamer slide renderer
     # (infrastructure/rendering/slides_renderer.py) hard-codes that location

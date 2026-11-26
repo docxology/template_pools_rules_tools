@@ -28,4 +28,4 @@ inside a full template checkout — from this standalone repository, run
 ## See also
 
 - [`../AGENTS.md`](../AGENTS.md)
-- [`README.md`](README.md)
+- [Reference](../docs/reference/scripts.md)

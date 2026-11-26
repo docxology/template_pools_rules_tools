@@ -11,7 +11,7 @@ for directory-specific rules.
 ## Purpose
 
 Ground truth for integration counts lives in `output/data/manuscript_variables.json`;
-configuration is owned by `manuscript/config.yaml`.
+configuration is owned by `docs/manuscript/config.yaml`.
 
 This exemplar shows how a project reads from the three top-level resource
 directories:
@@ -32,7 +32,7 @@ write back to `fonds/`, `rules/`, or `tools/` from project code.
 | `src/` | Pure readers and validators — no `infrastructure` imports |
 | `scripts/` | Thin orchestrators; import from `src/` only |
 | `tests/` | Real file paths; skip with `pytest.mark.skipif` when files absent |
-| `manuscript/` | Self-contained prose sections referencing the integration |
+| `docs/manuscript/` | Self-contained prose sections referencing the integration |
 
 ---
 
@@ -67,8 +67,7 @@ uv run python scripts/04_validate_strong_rules.py
 ```
 
 The `--cov-fail-under=90` floor, and the strong-rule / resource-receipt tests,
-need the `fonds/`, `rules/`, and `tools/` trees: a standalone copy without them
-reaches ~65% coverage and fails those resource-dependent tests.
+need the `fonds/`, `rules/`, and `tools/` trees: use the pinned runner in the [verification guide](docs/quickstart.md).
 
 ---
 

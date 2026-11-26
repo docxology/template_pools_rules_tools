@@ -48,6 +48,7 @@ from .figure_support import (
 from .figure_support import (
     INTEGRATION_FIGURE_SPECS as _INTEGRATION_FIGURE_SPECS,
 )
+from .project_paths import manuscript_source_dir
 from .rule_hierarchy_figure import generate_rule_hierarchy
 
 # Registry metadata is re-exported from this compatibility façade because the
@@ -91,7 +92,7 @@ def _ensure_dir(path: pathlib.Path) -> None:
 
 def _default_output_dir() -> pathlib.Path:
     here = pathlib.Path(__file__).resolve().parents[1]
-    return here / "manuscript" / "figures"
+    return manuscript_source_dir(here) / "figures"
 
 
 def _resolve_output(

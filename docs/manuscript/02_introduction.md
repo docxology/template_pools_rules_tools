@@ -23,7 +23,7 @@ This paper introduces `template_pools_rules_tools`, a **meta-project exemplar** 
 | `src/tools_invoker.py` | Executable tools | `discover_tools()` |
 | `src/integration.py` | All three | `run_integration_demo()` |
 
-![Three-layer resource architecture of template_pools_rules_tools. Fonds (left) provide read-only data pools; Rules (centre) provide governance constraints; Tools (right) provide executable entry points. The Integration layer (bottom) orchestrates all three.](figures/architecture_overview.png){#fig:architecture width=90%}
+![Three panels show illustrative counts for the fonds, rules, and tool categories. The integration section reports the live counts.](../../output/figures/architecture_overview.png){#fig:architecture width=90%}
 
 The architecture obeys three design invariants:
 

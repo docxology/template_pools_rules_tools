@@ -43,9 +43,9 @@ INTEGRATION_FIGURE_SPECS: tuple[IntegrationFigureSpec, ...] = (
     IntegrationFigureSpec(
         label="fig:architecture",
         filename="architecture_overview.png",
-        caption="Three-layer resource architecture with the integration layer.",
+        caption="Illustrative resource counts across fonds, rules, and tools.",
         generated_by="src.figures.generate_architecture_overview",
-        alt_text="Diagram showing fonds, rules, and tools feeding a shared integration layer.",
+        alt_text="Three horizontal bar charts show sample counts for fonds, rules, and tools.",
     ),
     IntegrationFigureSpec(
         label="fig:counts",

@@ -29,7 +29,7 @@ The author thanks the Active Inference Institute for hosting the public template
 
 ## Data Availability
 
-All source code, configuration files, and exemplar resources described in this paper are available in the [public template repository](https://github.com/docxology/template) under the `projects/templates/template_pools_rules_tools/` path. The integration pipeline is fully reproducible from source using `uv run python projects/templates/template_pools_rules_tools/scripts/02_run_integration.py` from the repository root. Generated manuscript variables are stored in `output/data/manuscript_variables.json` and injected at render time. Every figure in this manuscript, including the cover illustration, is likewise reproducible from source via `uv run python projects/templates/template_pools_rules_tools/scripts/05_generate_figures.py`, which writes directly to `manuscript/figures/`.
+All source code, configuration files, and exemplar resources described in this paper are available in the [public template repository](https://github.com/docxology/template) and the [standalone project repository](https://github.com/docxology/template_pools_rules_tools). The integration pipeline is fully reproducible from source using `uv run python projects/templates/template_pools_rules_tools/scripts/02_run_integration.py` from the repository root. Generated manuscript variables are stored in `output/data/manuscript_variables.json` and injected at render time. Every figure in this manuscript, including the cover illustration, is likewise reproducible from source via `uv run python projects/templates/template_pools_rules_tools/scripts/05_generate_figures.py`, which writes to `docs/manuscript/figures/` and publishes copies to `output/figures/`.
 
 ## Competing Interests
 
@@ -43,8 +43,8 @@ This exemplar targets full computational reproducibility for every quantitative 
 |---|---|---|
 | Integration counts (fonds/rules/tools) | `scripts/02_run_integration.py` | `tests/test_integration.py` end-to-end assertion |
 | Manuscript variable tokens | `scripts/03_generate_manuscript.py` | Rendered PDF contains no unresolved `{{...}}` tokens |
-| All 9 figures (8 content + 1 cover) | `scripts/05_generate_figures.py` | `tests/test_figures.py` (per-function file-existence checks) |
-| ≥90% `src/` line coverage | `uv run pytest … --cov-fail-under=90` | CI + local pre-push gate |
+| Eight content figures and the cover | `scripts/05_generate_figures.py` | `tests/test_figures.py` (per-function file-existence checks) |
+| ≥90% `src/` coverage | `uv run pytest … --cov-fail-under=90` | CI + local pre-push gate |
 | Combined PDF | full project pipeline, PDF rendering stage (4-pass xelatex + bibtex) | `pdftotext` scan for unresolved-reference markers and page-scale raster read |
 
-A reader who clones the repository and runs the five commands above, in order, reproduces every number and image in this document without manual intervention. Every quantitative claim in this document — fond/rule/tool counts, test counts, coverage percentages, and both bar-chart figures (@fig:counts, @fig:pipeline) — is generated from the same `run_integration_demo()` call at render time. None of these numbers are hand-typed; a `test_reflects_changed_integration_result` negative control in `tests/test_manuscript_variables.py` proves the token-generation function actually tracks its source rather than emitting a fixed constant.
+The complete Template checkout supplies the resources needed to reproduce the integration counts and figures. Resource counts and the dashboard inputs (@fig:counts, @fig:pipeline) come from `run_integration_demo()`. The test suite reports coverage separately, and coverage thresholds come from the declared rule schemas. None of these numbers are hand-typed; a `test_reflects_changed_integration_result` negative control in `tests/test_manuscript_variables.py` proves the token-generation function actually tracks its source rather than emitting a fixed constant.

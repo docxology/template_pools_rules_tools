@@ -1,8 +1,7 @@
 # tests/ — template_pools_rules_tools
 
 Project tests (90% coverage floor on `src/`, configured in `pyproject.toml`;
-reachable only where the `fonds/`, `rules/`, and `tools/` trees are present —
-a standalone copy without them lands near 65%). Real fixtures under `fonds/`,
+see the [verification guide](../docs/quickstart.md) for the shared-resource setup). Real fixtures under `fonds/`,
 `rules/`, and `tools/` template trees — no mocks.
 
 ## Running
@@ -26,4 +25,4 @@ The suite currently contains eleven test modules:
 ## See also
 
 - [`../AGENTS.md`](../AGENTS.md)
-- [`README.md`](README.md)
+- [Reference](../docs/reference/tests.md)

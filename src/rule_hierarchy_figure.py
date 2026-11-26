@@ -6,6 +6,8 @@ import logging
 import pathlib
 from typing import TYPE_CHECKING
 
+from .project_paths import manuscript_source_dir
+
 logger = logging.getLogger(__name__)
 
 try:
@@ -32,7 +34,7 @@ GRID = "#e2e8f0"
 
 
 def _default_output_dir() -> pathlib.Path:
-    return pathlib.Path(__file__).resolve().parents[1] / "manuscript" / "figures"
+    return manuscript_source_dir(pathlib.Path(__file__).resolve().parents[1]) / "figures"
 
 
 def _resolve_output(output_dir: str | pathlib.Path | None, filename: str) -> pathlib.Path:

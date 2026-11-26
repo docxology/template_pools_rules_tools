@@ -44,7 +44,7 @@ rule:
 
 The `enforcement: fail_on_violation` field signals that a pipeline must halt and report when this rule is violated. Strong rules are suitable for invariants that, if broken, indicate a genuine defect rather than a style preference: coverage below the source-declared threshold means tests are missing; a manuscript section without an abstract means the document is incomplete.
 
-![Rule hierarchy: the two template rule sets, each split into a machine-enforceable `strong/` branch and a guidance-only `soft/` branch.](figures/rule_hierarchy.png){#fig:rulehier width=85%}
+![Rule hierarchy: the two template rule sets, each split into a machine-enforceable `strong/` branch and a guidance-only `soft/` branch.](../../output/figures/rule_hierarchy.png){#fig:rulehier width=85%}
 
 ## The Two Template Rule Sets
 
@@ -55,7 +55,7 @@ This rule set governs software projects throughout the template repository. Its 
 | File | Constraint |
 |---|---|
 | `strong/coverage-gate.yaml` | Minimum coverage: infrastructure 60%, project `src/` 90%, public API 95% |
-| `strong/module-structure.yaml` | Required directory layout: `src/`, `tests/`, `scripts/`, `manuscript/` |
+| `strong/module-structure.yaml` | Required source files and constraints on package module layout |
 
 Its soft rules provide guidance on code style, commit message conventions, and pull-request labelling.
 
@@ -110,10 +110,10 @@ result = evaluate_strong_rules("template_project_rules", context)
 | Kind | Evaluator | Checks |
 |---|---|---|
 | `coverage_threshold` | `_evaluate_coverage_threshold` | Measured coverage percentages (from `context["coverage"]`) against each constraint's declared `minimum_line_coverage` |
-| `module_structure` | `_evaluate_module_structure` | Required project directory layout (`src/`, `tests/`, `scripts/`, `manuscript/`) actually exists |
+| `module_structure` | `_evaluate_module_structure` | Required project directory layout is evaluated against the declared rule requirements |
 | `section_schema` | `_evaluate_section_schema` | Required manuscript sections, ordering, and forbidden placeholder headings (`TODO`, `Draft`, etc.) |
 | `reference_schema` | `_evaluate_reference_schema` | Required BibTeX fields and cite-key format constraints on every parsed reference entry |
 
 Each evaluator distinguishes structured violation *reasons* rather than collapsing everything to a boolean — for example, `coverage_threshold` reports separately whether a key was absent from context (a context-completeness issue), non-numeric (a context-shape issue), or numeric-but-below-minimum (a genuine rule violation). This is what lets the pipeline tell a maintainer *why* a rule failed, not merely *that* it failed — directly addressing the "actionable defect" distinction introduced in the previous section.
 
-Crucially, `section_schema` and `reference_schema` are not evaluated against synthetic fixtures — `load_rule_context_from_project()` (in `scripts/04_validate_strong_rules.py`) builds their context by parsing *this project's own, current* `manuscript/references.bib` into structured reference entries and extracting the real `# `-level headings from every file under `manuscript/*.md`. Running `uv run python projects/templates/template_pools_rules_tools/scripts/04_validate_strong_rules.py` therefore semantically validates this exact manuscript's own bibliography and section structure, live, on every invocation — re-run that command to see the current evaluation and violation counts rather than trusting a number printed here, since either count can legitimately change as the manuscript grows.
+Crucially, `section_schema` and `reference_schema` are not evaluated against synthetic fixtures — `load_rule_context_from_project()` (in `scripts/04_validate_strong_rules.py`) builds their context by parsing *this project's own, current* `docs/manuscript/references.bib` into structured reference entries and extracting the real `# `-level headings from every file under `manuscript/*.md`. Running `uv run python projects/templates/template_pools_rules_tools/scripts/04_validate_strong_rules.py` therefore semantically validates this exact manuscript's own bibliography and section structure, live, on every invocation — re-run that command to see the current evaluation and violation counts rather than trusting a number printed here, since either count can legitimately change as the manuscript grows.

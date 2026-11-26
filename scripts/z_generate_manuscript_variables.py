@@ -5,9 +5,9 @@ Invoked automatically by the rendering pipeline
 (``infrastructure.rendering._manuscript_source.run_manuscript_variable_script``)
 immediately before PDF rendering. Writes
 ``output/data/manuscript_variables.json`` and substitutes every
-``{{UPPERCASE_KEY}}`` token in ``manuscript/*.md`` into
-``output/manuscript/``, which the renderer then prefers over the raw
-``manuscript/`` source (see
+``{{UPPERCASE_KEY}}`` token in ``docs/manuscript/*.md`` into
+``output/manuscript/``, which the renderer then prefers over the authored
+``docs/manuscript/`` source (see
 :func:`infrastructure.rendering._manuscript_source.resolve_manuscript_dir`).
 
 Run from the repository root:

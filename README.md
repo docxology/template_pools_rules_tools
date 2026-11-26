@@ -1,117 +1,17 @@
-# template_pools_rules_tools
+# Pools, Rules, and Tools
 
-**Pools, Rules, and Tools: A Template-Integrated Resource Architecture**
+This Python exemplar discovers read-only Template resource pools, checks rules
+against the current project, and validates declared tool entrypoints. It renders
+a paper with integration counts, evidence figures, and a bibliography.
 
-![Resource architecture overview integrating fonds data pools, formal and soft rule specifications, and executable tool contracts](output/figures/architecture_overview.png)
+- [Documentation](docs/README.md)
+- [Setup, usage, and verification](docs/quickstart.md)
+- [Manuscript](docs/manuscript/README.md)
+- [Publication configuration](docs/publishing.md)
 
-Run from this repository root with `uv run python scripts/…`; inside the
-[template monorepo](https://github.com/docxology/template) the same scripts live at
-`projects/templates/template_pools_rules_tools/scripts/`.
-Copy `manuscript/config.yaml.example` to `manuscript/config.yaml` for forkable
-configuration. Preserve template integrity when forking this exemplar into a
-standalone checkout.
+![Resource architecture overview](output/figures/architecture_overview.png)
 
-A meta-project exemplar demonstrating the integration of three top-level resource directories and four public tool exemplars:
-
-| Directory | Role |
-|---|---|
-| `fonds/` | Stable data resource pools (bibliographies, contacts, datasets) |
-| `tools/` | Executable tool entry points (code executor, model, validator, skill) |
-| `rules/` | Soft (prompt-like) and strong (formal) rule specifications |
-
-## Purpose
-
-This project shows agents and developers how to:
-
-1. **Read fonds** — load bibliographic references, contacts, and dataset metadata from `fonds/templates/`
-2. **Apply rules** — discover and parse soft guidelines and strong constraint schemas from `rules/templates/`
-3. **Invoke tools** — enumerate tool manifests and validate entrypoint scripts from `tools/templates/`
-4. **Integrate all three** — orchestrate a combined validation and reporting pipeline
-
-The resource-pool lane now exposes typed resource manifests and a
-schema-versioned validation receipt. Invalid paths, duplicate identities, and
-missing required fields fail closed; local-only pool folders remain outside the
-public tracked exemplar until a fourth fond is deliberately authored.
-
-## Structure
-
-```
-template_pools_rules_tools/
-├── src/
-│   ├── type_defs.py           # All TypedDict definitions — edit here first
-│   ├── fonds_reader.py        # Read fonds from fonds/templates/
-│   ├── rules_applier.py       # Load and apply soft rules from rules/templates/
-│   ├── strong_rule_evaluator.py  # Evaluate strong (hard-constraint) rules
-│   ├── tools_invoker.py       # Discover tools from tools/templates/
-│   ├── integration.py         # Integration orchestrator; generate_figure_data()
-│   ├── figure_support.py     # Figure themes, status maps, and provenance specs
-│   ├── figures.py             # Figure façade and shared manuscript figures
-│   ├── cover_figure.py        # Cover-art renderer
-│   ├── rule_hierarchy_figure.py # Rule-hierarchy renderer
-│   └── __init__.py            # Re-exports all public symbols
-├── scripts/
-│   ├── 01_validate_sources.py       # Validate all sources exist and are well-formed
-│   ├── 02_run_integration.py        # Run the full integration demo
-│   ├── 03_generate_manuscript.py    # Generate manuscript variables
-│   ├── 04_validate_strong_rules.py  # Validate strong-rule compliance
-│   ├── 05_generate_figures.py       # Render the manuscript figure set
-│   └── z_generate_manuscript_variables.py  # Resolve manuscript tokens
-├── tests/
-│   ├── test_fonds_reader.py
-│   ├── test_rules_applier.py
-│   ├── test_strong_rule_evaluator.py
-│   ├── test_tools_invoker.py
-│   ├── test_integration.py
-│   ├── test_figures.py
-│   ├── test_property_based.py
-│   ├── test_manuscript_variables.py
-│   ├── test_coverage_extras.py
-│   └── test_generate_figures_script.py
-└── manuscript/
-    ├── config.yaml, config.yaml.example
-    ├── 00_frontmatter.md … 07_conclusion.md
-    ├── preamble.md, references.bib
-    └── figures/
-```
-
-## Quick Start
-
-From this repository root (standalone checkout):
-
-```bash
-uv sync --extra dev
-
-# Run tests
-uv run pytest tests/ -v
-
-# Validate sources
-uv run python scripts/01_validate_sources.py
-
-# Run integration demo
-uv run python scripts/02_run_integration.py
-```
-
-Inside the [template monorepo](https://github.com/docxology/template), run the
-same commands from the monorepo root with the project prefix:
-
-```bash
-uv run pytest projects/templates/template_pools_rules_tools/tests/ -v
-uv run python projects/templates/template_pools_rules_tools/scripts/02_run_integration.py
-```
-
-## When to use this template
-
-Use this project when you need to:
-
-- **Demonstrate** how a research project integrates multiple resource directories (fonds, tools, rules) in a single pipeline
-- **Validate** that your fonds, tools, and rule infrastructure modules are correctly wired and discoverable
-- **Onboard** new teams to the three-resource architecture with a concrete, runnable example
-- **Test** cross-cutting concern integration where fonds supply data, rules govern validation, and tools execute transforms
-- **Extend** the architecture by adding new resource types; copy this project as a starting point for integration testing
-
-This template is ideal for platform teams, CI engineers, and infrastructure maintainers who need a self-validating meta-project that exercises all three resource layers without coupling to a specific domain science.
-
-## Publication and rendering
+## Publication status
 
 <!-- PUBLISHING-STATUS:START (generated by infrastructure.publishing.status_report) -->
 **Pools, Rules, and Tools: A Template-Integrated Resource Architecture** · v1.0.0 · Daniel Ari Friedman
@@ -143,23 +43,5 @@ Publishing surface — 20 platforms, 2 published:
 | stripe | documented | 🟡 planned | — | `STRIPE_SECRET_KEY`, `STRIPE_PUBLISHABLE_KEY` |
 | ingramspark | documented | 🟡 planned | — | `INGRAMSPARK_CLIENT_ID`, `INGRAMSPARK_CLIENT_SECRET` |
 
-_Status legend: ✅ published (durable identifier recorded in `config.yaml`) · 🔵 reserved (identifier reserved but not yet registered by final publication) · ⚪ available (adapter implemented and locally verifiable) · 🟡 planned. This block is generated — edit `manuscript/config.yaml`, then regenerate with `uv run python -m infrastructure.publishing.status_report --project <path> --write`._
+_Status legend: ✅ published (durable identifier recorded in `config.yaml`) · 🔵 reserved (identifier reserved but not yet registered by final publication) · ⚪ available (adapter implemented and locally verifiable) · 🟡 planned. This block is generated — see the publication configuration guide to regenerate it._
 <!-- PUBLISHING-STATUS:END -->
-
-This project is designed to run **inside** the [docxology/template](https://github.com/docxology/template) monorepo. All paths resolve relative to the repository root. The project reads public tracked exemplars from `fonds/templates/`, `tools/templates/`, and `rules/templates/` — these must be present; in a standalone checkout they are absent, and the readers degrade to empty results with logged warnings (see [`STANDALONE.md`](STANDALONE.md)). Run the monorepo-prefixed commands from [Quick Start](#quick-start).
-
-## Dependencies
-
-- `pyyaml` — YAML manifest loading (always available in the template environment)
-- `matplotlib` — deterministic PNG figure generation
-- `pillow` — declared runtime dependency; matplotlib's PNG backend (`src/` imports no `PIL` symbols directly)
-- `jsonschema` — real validator-tool subprocess tests
-
-Dev tooling (`pytest`, `pytest-cov`, `mypy`, `hypothesis`, `types-PyYAML`) is
-declared in the `dev` extra: `uv sync --extra dev`.
-
-## See Also
-
-- `fonds/AGENTS.md` — fond discovery and validation conventions
-- `rules/AGENTS.md` — rule loading and enforcement conventions
-- `tools/AGENTS.md` — tool discovery and invocation conventions
