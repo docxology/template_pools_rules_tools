@@ -16,7 +16,7 @@ Context keys (all optional; missing keys skip semantic checks for that rule):
 unit tests) but deliberately has no corresponding strong-rule YAML file under
 ``rules/templates/*/strong/`` yet — adding one would mean writing into the shared
 ``rules/`` tree, which this project's own read-only invariant reserves for an
-explicit, separately-considered decision (see ``manuscript/07_conclusion.md``).
+explicit, separately-considered decision (see ``docs/manuscript/07_conclusion.md``).
 """
 
 from __future__ import annotations
@@ -28,6 +28,7 @@ from typing import TypedDict
 
 import yaml
 
+from .project_paths import manuscript_source_dir
 from .rules_applier import load_strong_rules
 from .type_defs import StrongRuleEntry
 
@@ -462,8 +463,8 @@ def parse_bib_entries(bib_text: str) -> list[dict[str, object]]:
     return references
 
 
-def _load_strong_rules_config(project_root: pathlib.Path) -> dict[str, object]:
-    config_path = project_root / "manuscript" / "config.yaml"
+def _load_strong_rules_config(manuscript_dir: pathlib.Path) -> dict[str, object]:
+    config_path = manuscript_dir / "config.yaml"
     if not config_path.is_file():
         return {}
     try:
@@ -481,11 +482,11 @@ def _load_strong_rules_config(project_root: pathlib.Path) -> dict[str, object]:
 
 def load_rule_context_from_project(project_root: pathlib.Path) -> dict[str, object]:
     """Build a default evaluation context for *project_root*."""
-    manuscript_dir = project_root / "manuscript"
-    config_block = _load_strong_rules_config(project_root)
+    manuscript_dir = manuscript_source_dir(project_root)
+    config_block = _load_strong_rules_config(manuscript_dir)
 
     # `manuscript_sections` must reflect ONLY the real `# `-level headings
-    # detected in this project's own manuscript/*.md files. It must never be
+    # detected in this project's own authored manuscript files. It must never be
     # padded with `canonical_sections` from config.yaml: `section-schema.yaml`'s
     # `required_sections` is drawn from that same canonical list, so injecting
     # it here would make the "required section missing" check compare the

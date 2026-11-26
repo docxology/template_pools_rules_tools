@@ -38,8 +38,8 @@ def _load_script_module():
 def test_generate_assets_writes_registry_for_real_integration_figures(tmp_path: Path) -> None:
     module = _load_script_module()
     project = tmp_path / "project"
-    manuscript = project / "manuscript"
-    shutil.copytree(PROJECT_ROOT / "manuscript", manuscript)
+    manuscript = project / "docs" / "manuscript"
+    shutil.copytree(PROJECT_ROOT / "docs" / "manuscript", manuscript)
 
     written = module.generate_assets(
         figures_dir=manuscript / "figures",
@@ -82,8 +82,8 @@ def test_incomplete_real_figure_set_cannot_be_published(tmp_path: Path) -> None:
 def test_validator_rejects_deleted_published_figure(tmp_path: Path) -> None:
     module = _load_script_module()
     project = tmp_path / "project"
-    manuscript = project / "manuscript"
-    shutil.copytree(PROJECT_ROOT / "manuscript", manuscript)
+    manuscript = project / "docs" / "manuscript"
+    shutil.copytree(PROJECT_ROOT / "docs" / "manuscript", manuscript)
     module.generate_assets(
         figures_dir=manuscript / "figures",
         output_figures_dir=project / "output" / "figures",

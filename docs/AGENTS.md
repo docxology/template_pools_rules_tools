@@ -5,7 +5,7 @@ Agent-facing notes for this repository's `docs/` directory.
 ## Layout
 
 - `README.md` — human entry point: what the repo is, directory map, run/test
-  commands (copied from root `README.md` and `AGENTS.md`).
+  commands.
 - This file — agent conventions for maintaining `docs/`.
 
 ## Key modules (from root AGENTS.md)
@@ -22,7 +22,7 @@ Agent-facing notes for this repository's `docs/` directory.
 
 ## Conventions observed in this repo
 
-- Manuscript follows the shared template standard: `manuscript/config.yaml` is
+- Manuscript follows the shared template standard: `docs/manuscript/config.yaml` is
   the live metadata source; `config.yaml.example` is the fork template.
 - `{{TOKEN}}` placeholders in manuscript markdown are render-time variables,
   not defects; ground truth for integration and figure counts lives in
@@ -32,8 +32,7 @@ Agent-facing notes for this repository's `docs/` directory.
 - Decision memory: root `README.md` links the monorepo
   `docs/rules/memory_and_decision_records.md` guidance (resolves inside a full
   template checkout only).
-- Docs changes should be committed path-scoped to `docs` (and `manuscript`
-  when applicable), never mixed with code changes.
+- Docs changes should be kept in `docs/`. Adapt source consumers when their documented inputs move.
 
 ## Scope rules for agents
 

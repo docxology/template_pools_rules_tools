@@ -18,4 +18,4 @@ Integration readers and appliers for fonds, rules, and tools pools.
 ## See also
 
 - [`../AGENTS.md`](../AGENTS.md)
-- [`README.md`](README.md)
+- [Reference](../docs/reference/source.md)

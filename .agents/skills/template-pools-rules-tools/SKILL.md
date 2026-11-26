@@ -54,9 +54,9 @@ uv run python scripts/runner/execute_pipeline.py --project templates/template_po
 - **No mocks.** Tests use real template paths, temp dirs, or `pytest.mark.skipif` when files are absent.
 - **Outputs are disposable.** Regenerate `output/` via pipeline stages; do not hand-edit copied deliverables.
 - **Repo root resolution.** `src/*` resolves the monorepo root four levels above each module file.
-- **`manuscript/preamble.md` needs a closed ` ```latex ``` ` fence.** An unfenced file silently drops every multi-line directive (geometry, hypersetup, tcolorbox) via a whitelist fallback — only single-line `\usepackage{}`/`\newcommand{}` survive. Always verify with `extract_preamble()` after editing.
+- **`docs/manuscript/preamble.md` needs a closed ` ```latex ``` ` fence.** An unfenced file silently drops every multi-line directive (geometry, hypersetup, tcolorbox) via a whitelist fallback — only single-line `\usepackage{}`/`\newcommand{}` survive. Always verify with `extract_preamble()` after editing.
 - **Manuscript tokens must be `{{UPPERCASE_KEY}}`, never lowercase-dotted.** `infrastructure/rendering/manuscript_injection.py`'s regex only matches uppercase; a `{{integration.foo}}`-style token silently never resolves. The pipeline also requires `scripts/z_generate_manuscript_variables.py` to exist by that exact name — `run_manuscript_variable_script()` no-ops if it's absent.
-- **`src/figures.py::INTEGRATION_FIGURE_SPECS` is the figure-provenance source.** It does not auto-insert images — every figure still needs a real `![caption](figures/x.png){#fig:label}` block in the manuscript body, or its `@fig:` cross-reference renders as a literal `??`.
+- **`src/figures.py::INTEGRATION_FIGURE_SPECS` is the figure-provenance source.** It does not auto-insert images — every figure still needs a real `![caption](../../output/figures/x.png){#fig:label}` block in the manuscript body, or its `@fig:` cross-reference renders as a literal `??`.
 - **Generated provenance is separate from config metadata.**
   `05_generate_figures.py` binds the eight real manuscript labels to the PNGs
   produced in that run and writes `output/figures/figure_registry.json`; a
@@ -68,7 +68,7 @@ uv run python scripts/runner/execute_pipeline.py --project templates/template_po
 
 - Project contract: [`AGENTS.md`](../../../AGENTS.md)
 - README: [`README.md`](../../../README.md)
-- TODO: [`TODO.md`](../../../TODO.md)
-- Fonds layer: [`fonds/AGENTS.md`](../../../../../../fonds/AGENTS.md)
-- Rules layer: [`rules/AGENTS.md`](../../../../../../rules/AGENTS.md)
-- Tools layer: [`tools/AGENTS.md`](../../../../../../tools/AGENTS.md)
+- TODO: [`TODO.md`](../../../docs/TODO.md)
+- Fonds layer: [`fonds/AGENTS.md`](https://github.com/docxology/template/blob/87704feae0a4490ef7dad9c931d268e8c30273c2/fonds/AGENTS.md)
+- Rules layer: [`rules/AGENTS.md`](https://github.com/docxology/template/blob/87704feae0a4490ef7dad9c931d268e8c30273c2/rules/AGENTS.md)
+- Tools layer: [`tools/AGENTS.md`](https://github.com/docxology/template/blob/87704feae0a4490ef7dad9c931d268e8c30273c2/tools/AGENTS.md)

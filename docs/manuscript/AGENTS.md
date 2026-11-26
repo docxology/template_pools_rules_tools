@@ -5,6 +5,6 @@ Integration manuscript for fonds, rules, and tools. Counts inject from
 
 ## See also
 
-- [`../AGENTS.md`](../AGENTS.md)
+- [Project instructions](../../AGENTS.md)
 - [`README.md`](README.md)
 - [`figures/AGENTS.md`](figures/AGENTS.md)

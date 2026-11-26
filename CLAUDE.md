@@ -66,9 +66,8 @@ uv run pytest tests/ -v \
     --cov-fail-under=90
 ```
 
-The 90% floor and the strong-rule / resource-receipt tests require the
-`fonds/`, `rules/`, and `tools/` trees; a standalone copy without them reaches
-~65% coverage and fails those tests.
+The coverage gate and resource-dependent tests use the pinned runner in the
+[verification guide](docs/quickstart.md).
 
 ---
 

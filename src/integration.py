@@ -16,6 +16,7 @@ from .fonds_reader import (
     read_contacts_fond,
     read_datasets_fond,
 )
+from .project_paths import manuscript_source_dir
 from .rules_applier import validate_against_rules
 from .strong_rule_evaluator import parse_bib_entries
 from .tools_invoker import discover_tools, validate_tool_scripts_exist
@@ -280,7 +281,7 @@ def check_bibliography_overlap(
     project's graceful-degradation convention.
     """
     root = project_root if project_root is not None else _PROJECT_ROOT
-    bib_path = root / "manuscript" / "references.bib"
+    bib_path = manuscript_source_dir(root) / "references.bib"
 
     project_keys: list[str] = []
     if bib_path.is_file():

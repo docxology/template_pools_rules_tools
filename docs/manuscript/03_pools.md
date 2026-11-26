@@ -6,7 +6,7 @@ A **fond** is a versioned, read-only data pool that any project in the repositor
 
 The three-layer taxonomy (bibliography, contacts, datasets) maps to the three most common categories of curated research data: citable literature, human collaboration networks, and input/output datasets. Each category carries its own schema enforced by `rules/templates/template_manuscript_rules`. @fig:taxonomy compares the three fond types field-by-field: every fond shares a manifest and a `type` discriminator, but the source-of-truth format, secondary mirror, and deduplication key differ by category — a consequence of each category's data having a naturally different canonical representation (BibTeX for citations, YAML for structured contact records, YAML for dataset metadata).
 
-![Schema taxonomy comparison across the three fond types. Each fond declares a manifest and a `type` field; source-of-truth format, secondary mirror, and dedup key differ by category.](figures/fond_taxonomy.png){#fig:taxonomy width=85%}
+![Schema taxonomy comparison across the three fond types. Each fond declares a manifest and a `type` field; source-of-truth format, secondary mirror, and dedup key differ by category.](../../output/figures/fond_taxonomy.png){#fig:taxonomy width=85%}
 
 ## The Three Template Fonds
 
