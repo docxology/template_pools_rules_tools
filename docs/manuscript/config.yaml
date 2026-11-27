@@ -36,8 +36,6 @@ publication:
   license: "CC-BY-4.0"
   venue: "Journal of Open Source Software"
   status: "preprint"
-  preprint_server: "arXiv"
-  preprint_id: "2026.00000"
   version_record: "https://zenodo.org/records/21298889"
 
 # Project-owned settings are namespaced so the generic renderer can distinguish
